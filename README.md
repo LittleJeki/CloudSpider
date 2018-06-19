@@ -1,20 +1,28 @@
-# CloudSpider
-Using Python to Do a Climbing and Data Analysis of Top 50 Song Lyrics for Netease Cloud Music Top Singers.
+# CloudLRC-Spider
+Use python to crawl the lyrics of all the singers of Netease Cloud Music, and analyze the data of word frequency, word cloud and subject model extraction on the lyrics text.
 
-### Step 1
+------
 
-Get all singer information for NetEase Cloud Music, save it as a singer id and name in a csv file.
+### get-artist_ids.py
 
-### Step 2
+Crawling website content: Use python's **request** and **bs4** to crawl http://music.163.com/#/discover/artist  , follow the singer category in the navigation bar on the left side of the page, crawl the singer related information in order, and follow-up will be used. Singer **id** and **name** are saved to the local csv file.
 
-Given a singer's information, the related lyrics of the singer's Top50 song on Netease Cloud Music are obtained and written in a local folder in the TXT format.
+### get-lrc.py
 
-### Step 3
+The lyrics crawl: read the csv file singer information, use python's **request** and **bs4** to crawl the lyrics of each singer's Top50 song corresponding to the home page, and locally create a singer folder and save the Top50 **lyrics** txt text.
 
-Make use of the Python word cloud tool to create a word cloud image of a popular song for a singer from a given lyrics text.
+### word-analysis.py
 
-A large number of lyrics texts were analyzed emotionally and thematically to obtain a corresponding visual analysis report.
-
-#### Result
+Word Cloud Production: Read the lyrics of all the songs under each singer folder, use the **jieba** word segmentation tools and stop words to do preliminary data processing on all lyrics texts, and then do word **frequency statistics** to make the corresponding **word cloud** renderings.
 
 ![xusong.jpg](xusong.jpg)
+
+### topic_analysis.py
+
+Subject extraction: Read the lyrics of all songs under each singer folder, use **jieba** word segmentation tools and stop words to do data preprocessing on all lyric texts, and then perform **text vectorization** to display the first few keywords under each topic. Use **pyLDAvis** to do the **topic visualization**.
+
+![](topic_analysis.png)
+
+### P.s.
+
+Because of the language charm of Chinese lyrics, a simple python sentiment analysis library does not allow accurate sentiment analysis, so it is not shown.

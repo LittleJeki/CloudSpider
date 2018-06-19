@@ -77,7 +77,7 @@ def download_lyric(uid,singer):
         except:                         #异常处理
             continue
 
-    print(singer,'done')                #一位歌手Top50歌曲歌词下载完毕
+    print(singer,'whose Top50 songs downloading complete.')                #一位歌手Top50歌曲歌词下载完毕
 
 def getlist(csv_file):
     cc=codecs.open('music_163_artists.csv', 'r',"gb18030")
@@ -98,8 +98,8 @@ if __name__ == '__main__':
     except:
         pass
 
-    # artsitids,artistnames=getlist('music_163_artists.csv')
-    # for i in range(1,5):            #批量下载
-    #     download_lyric(artsitids[i],artistnames[i])
+    artsitids,artistnames=getlist('music_163_artists.csv')
+    for i in range(20,50):            #批量下载
+        download_lyric(artsitids[i],artistnames[i])
 
-    download_lyric(6472, '张杰')
+    # download_lyric(6472, '张杰')
